@@ -1,0 +1,12 @@
+#implementar enrutamiento dinamico con GatewayServer
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: api-tarjetas
+        uri: lb://api-tarjetas   #lb significa que implementa balanceo de carga
+        predicates:
+            - Path=/api/gateway/**
+        filters:
+            - StripPrefix=2     #significa dos segmentos en el path 
